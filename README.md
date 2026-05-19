@@ -1,73 +1,108 @@
-Le projet **PAN-AFRICA VISION 2030** est un portail interactif et prestigieux conçu pour simuler et concevoir des méga-projets de développement à l'échelle du continent africain pour l'horizon 2030. Le projet combine un design "Luxe & Futuriste" avec la puissance de l'IA générative pour offrir une expérience immersive.
+# PAN-AFRICA VISION 2030
 
-Voici les détails approfondis du projet et de ses options :
+Application web de vision stratégique pour l'Afrique, propulsée par l'IA.
 
-### 1. Les Outils de Vision IA (Options du Portail)
-Le portail propose quatre outils spécialisés utilisant l'IA Mistral pour générer des concepts détaillés :
+## 🚀 Lancement Rapide (Termux/Android)
 
-* **🏙️ Générateur de Cité Futuriste** : Permet de concevoir des villes intelligentes en choisissant la région (ex: Lagos, Nairobi, Dakar), la superficie (de 500 à 50 000 hectares) et le concept directeur (Hub IA, Éco-cité, Zone industrielle).
-* **🔬 Hub Scientifique & Spatial** : Projette des infrastructures de recherche de classe mondiale (IA, Génomique, Agence Spatiale) à l'échelle nationale, régionale ou continentale.
-* **🏛️ Musée & Pôle Culturel** : Crée des concepts d'institutions culturelles (Musée Panafricain, Bibliothèque Universelle) en définissant une direction architecturale (Afro-futuriste, Néo-traditionnel, High-tech).
-* **⚡ Projet Énergie Continent** : Dimensionne des infrastructures énergétiques massives (Solaire au Sahara, Hydrogène vert, Barrages) en ciblant des capacités allant de 500 MW à plus de 100 GW.
+Ce guide explique comment lancer l'application sur **Termux** (Android) avec ou sans environnement Debian.
 
-### 2. Architecture Technique & Sécurité
-Le projet utilise une structure robuste pour garantir performance et sécurité :
-* **Proxy Sécurisé (`mistral_proxy.php`)** : Ce script agit comme un rempart. Il contient les clés API Mistral côté serveur pour éviter qu'elles ne soient exposées dans le navigateur de l'utilisateur. Il gère également le **Rate Limiting** (limité à 30 requêtes) pour éviter les abus.
-* **Système de Prompting Dynamique** : Chaque option choisie par l'utilisateur est injectée dans un "prompt" sophistiqué qui force l'IA à adopter un rôle précis (urbaniste, ingénieur en chef, directeur artistique) et à structurer sa réponse avec des sections comme la vision, l'impact économique, et le calendrier 2025-2035.
+### Option 1 : Lancement Direct dans Termux (Recommandé)
 
-### 3. Design System & Expérience Utilisateur
-L'interface est conçue pour évoquer le pouvoir et l'avenir de l'Afrique :
-* **Identité Visuelle** : Palette de couleurs nommée "Noir Nuit", "Or Africain", "Vert Savane" et "Rouge Latérite".
-* **Interactivité Haute Fidélité** : Utilisation d'un curseur personnalisé qui réagit aux survols, d'un fond animé via Canvas dans la section Hero, et de typographies élégantes (*Cormorant Garamond* pour le prestige et *Syne* pour la modernité).
-* **Responsive Design** : Le portail est entièrement optimisé pour mobile, avec une adaptation des grilles et la désactivation du curseur personnalisé sur les écrans tactiles.
+C'est la méthode la plus simple et la plus rapide.
 
-### 4. Fonctionnalités de Contact et Leads
-Au-delà de la simulation IA, le projet intègre un tunnel de conversion :
-* **Gestion des Leads** : Un formulaire de contact permet aux utilisateurs de soumettre des demandes. Les données sont sauvegardées localement et un numéro de référence unique (ex: PAV-K8J2...) est généré pour chaque demande.
-* **Simulation d'Engagement** : Le système simule une attente de 72h pour un retour d'un "associé", renforçant l'aspect exclusif et professionnel de la plateforme.
+1.  **Ouvrez Termux** sur votre Android.
+2.  **Mettez à jour les paquets** :
+    ```bash
+    pkg update && pkg upgrade -y
+    ```
+3.  **Installez PHP** :
+    ```bash
+    pkg install php -y
+    ```
+4.  **Accédez au dossier du projet** (adaptez le chemin si nécessaire) :
+    ```bash
+    cd /storage/emulated/0/Download/PAN_AFRICA_VISION
+    # OU si vous avez cloné le projet ailleurs
+    cd ~/PAN_AFRICA_VISION
+    ```
+    *Note : Si vos fichiers sont dans un dossier différent, utilisez `cd` pour y aller.*
+5.  **Lancez le serveur web** :
+    ```bash
+    php -S 0.0.0.0:8080
+    ```
+    *Le serveur écoute maintenant sur toutes les interfaces réseau.*
+6.  **Ouvrez votre navigateur** (Chrome, Firefox, etc.) sur Android et tapez :
+    ```
+    http://localhost:8080
+    ```
+    ou
+    ```
+    http://127.0.0.1:8080
+    ```
 
-# 🌍 PAN-AFRICA VISION 2030 — Portail IA
+### Option 2 : Via un environnement Debian (Proot-Distro)
 
-Ce projet est une plateforme vitrine et interactive dédiée au développement panafricain pour l'horizon 2030. Elle utilise l'intelligence artificielle (Mistral AI) pour générer des concepts visionnaires de cités futuristes, de hubs scientifiques et de stratégies énergétiques pour le continent africain.
+Si vous préférez utiliser une distribution Debian complète dans Termux.
 
-## 📖 Concept IA et Portail PHP
+1.  **Installez `proot-distro`** dans Termux :
+    ```bash
+    pkg install proot-distro -y
+    ```
+2.  **Installez Debian** :
+    ```bash
+    proot-distro install debian
+    ```
+3.  **Lancez Debian** :
+    ```bash
+    proot-distro login debian
+    ```
+4.  **Dans Debian, installez PHP** :
+    ```bash
+    apt update && apt install php -y
+    ```
+5.  **Naviguez vers votre projet** (le stockage Android est monté dans `/sdcard`) :
+    ```bash
+    cd /sdcard/Download/PAN_AFRICA_VISION
+    # Adaptez le chemin selon l'emplacement réel de vos fichiers
+    ```
+6.  **Lancez le serveur** :
+    ```bash
+    php -S 0.0.0.0:8080
+    ```
+7.  **Ouvrez votre navigateur** Android et allez sur :
+    ```
+    http://localhost:8080
+    ```
 
-Le projet repose sur une architecture **Proxy** sécurisée pour intégrer l'IA :
+## 🖥️ Lancement sur PC (Linux/Mac/Windows WSL)
 
-1.  **Le Portail (Frontend) :** Une interface moderne (HTML/CSS/JS) qui recueille les paramètres de l'utilisateur (pays, type de projet, budget).
-2.  **Le Proxy PHP (`mistral_proxy.php`) :** Il sert d'intermédiaire sécurisé entre le navigateur de l'utilisateur et l'API de Mistral AI.
-    * **Sécurité :** Il masque vos clés API (qui ne sont jamais visibles côté client).
-    * **Contrôle :** Il gère le "Rate Limiting" (limitation du nombre de requêtes par IP) et la validation des données pour éviter les abus.
-    * **Communication :** Il reçoit un prompt simplifié, l'enrichit avec des instructions "système" précises, et renvoie la réponse formatée de l'IA.
+1.  Ouvrez un terminal dans le dossier du projet.
+2.  Lancez le serveur PHP :
+    ```bash
+    php -S localhost:8080
+    ```
+3.  Ouvrez votre navigateur : `http://localhost:8080`
 
-## 🔑 Obtenir une Clé API Mistral (Free Tier)
+## 🛠️ Dépannage
 
-Pour faire fonctionner l'IA, vous devez obtenir une clé API gratuite :
+*   **"Command not found" (php)** : Assurez-vous que PHP est bien installé (`pkg install php` sur Termux ou `apt install php` sur Debian).
+*   **Page blanche ou erreur 500** : Vérifiez les logs dans le terminal où le serveur tourne. Assurez-vous que les permissions d'écriture sont correctes pour le dossier `cache/` et `logs/`.
+    ```bash
+    chmod 755 cache logs
+    ```
+*   **Impossible de se connecter** :
+    *   Vérifiez que le serveur tourne bien (message "Development Server ... started").
+    *   Sur Termux, assurez-vous d'avoir accordé la permission de stockage si les fichiers sont sur le téléphone : `termux-setup-storage`.
+    *   Essayez de redémarrer le serveur.
 
-1.  Rendez-vous sur la **[Mistral AI Console](https://console.mistral.ai/)**.
-2.  Créez un compte ou connectez-vous.
-3.  Allez dans la section **"API Keys"**.
-4.  Cliquez sur **"Create new key"**. Mistral propose souvent des crédits gratuits lors de l'inscription pour tester leurs modèles (comme `mistral-large-latest`).
-5.  Copiez cette clé et insérez-la dans le tableau `$MISTRAL_KEYS` au début du fichier `mistral_proxy.php`.
+## 📄 Structure du projet
 
-## 💻 Installation en local avec Laragon
+- `index.php` : Point d'entrée principal.
+- `mistral_proxy.php` : Proxy pour les appels API (nécessite une clé API valide pour fonctionner pleinement).
+- `app.js` : Logique frontend.
+- `style.css` : Styles de l'application.
+- `V2/`, `V3/`, `V4/` : Versions précédentes ou alternatives.
 
-1.  **Téléchargement :** Installez [Laragon](https://laragon.org/download/) si ce n'est pas déjà fait.
-2.  **Placement des fichiers :**
-    * Allez dans le dossier racine de Laragon (généralement `C:\laragon\www`).
-    * Créez un dossier nommé `pan-africa-vision`.
-    * Placez-y les fichiers : `index.php`, `mistral_proxy.php`, `app.js` et `style.css`.
-3.  **Configuration des logs :**
-    * Dans votre dossier `pan-africa-vision`, créez un sous-dossier nommé `logs`.
-    * Assurez-vous que PHP a les droits d'écriture sur ce dossier pour que `proxy.log` puisse être généré.
-4.  **Lancement :**
-    * Démarrez Laragon et cliquez sur "Start All".
-    * Ouvrez votre navigateur sur  `http://localhost/pan-africa-vision`.
-5.  **Activation de cURL :** Le proxy utilise l'extension `php_curl`. Dans Laragon, vérifiez qu'elle est activée (Menu > PHP > Extensions > curl).
+## ⚠️ Note sur l'API
 
-## 🛠️ Structure du Projet
-
-* `index.php` : Page principale contenant la structure HTML et les sections du site.
-* `style.css` : Design système "Luxe & Prestige" (Noir Nuit, Or Africain, Vert Savane).
-* `app.js` : Logique frontend, gestion des formulaires et appels vers le proxy IA.
-* `mistral_proxy.php` : Cœur logique serveur gérant les appels API et la sécurité.
+L'application utilise un proxy pour communiquer avec l'IA Mistral. Les clés API incluses sont des exemples. Pour une fonctionnalité complète, remplacez-les par vos propres clés dans `mistral_proxy.php`.

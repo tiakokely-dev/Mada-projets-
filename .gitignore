@@ -1,7 +1,8 @@
 ```
+# Cache and temporary data
+cache/
+
 # Logs
 *.log
-
-# Cache
-cache/
+logs/
 ```
